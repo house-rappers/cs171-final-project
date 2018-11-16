@@ -1,0 +1,355 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Housing Crisis</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nouislider.css">
+    <script src="js/nouislider.js"></script>
+    
+    <style>
+        
+        .axis path, .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .area { fill: #b8860b; }
+
+        .area-danger {
+            fill: #800000;
+        }
+
+        .bar { fill: #b8860b; }
+
+        .line {
+            fill: none;
+            stroke: black;
+            stroke-width: 1.5px;
+        }
+
+        .overlay {
+            fill: none;
+            pointer-events: all;
+        }
+
+        .focus circle {
+            fill: none;
+            stroke: steelblue;
+        }
+
+            
+        .path { 
+            stroke: steelblue;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .button {
+            background-color: steelblue;
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">The Next Housing Crisis</h1>
+    <hr>
+    <div class="blurb">
+        In this final project, we look at several factors that we believe could contribute to the next housing crisis. We'll review each one and provide a narrative as to how and why we think this factor will contribute to a future housing crisis.
+        What we'll cover:
+        <ul>
+            <li>A look back at the last housing crisis</li>
+            <li>Demographic changes</li>
+            <li>Student loan debt</li>
+            <li>Consumer credit debt</li>
+            <li>Fluctuating interest rates</li>
+            <li>Foreign Investment in Real Estate</li>
+            <li>Economic Trends</li>
+        </ul>
+        We'll close with a summary of when we think the next hosuing crisis will hit.
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-2">
+            <h1 class="number">XX</h1>
+        </div>
+        <div class="col-4 blurb2">
+            <span> <u>XXXX</u> people who were impacted by the last housing crisis.</span>
+        </div>
+        <div class="col-2">
+            <h1 class="number"> XX</h1>
+        </div>
+        <div class="col-4 blurb2">
+            <span> <u>XXXX</u> dollars lost in the market as a consequence of the last housing crisis.</span>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col">
+            <h1 class="title2">The last housing crisis</h1>
+            <p class="blurb">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
+    <br/>
+    <br/>
+
+<div class="row">
+    <div class="col-12">
+        <form class="form-inline">
+            <div class="form-group">
+                <label form="data-view">Filter:</label>
+                <select class="form-control" id="crisis" onchange="updateVisualization()">
+                    <option value="sa">Seasonally Adjusted</option>
+                    <option value="nsa">Non-Seasonally Adjusted</option>
+                </select>
+            </div>
+        </form>        
+        <div id="housing-crisis"></div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-2">
+            <div>
+                <button class="button" onclick="updateVisualization()">Update Chart</button>
+            </div>
+        </div>
+        <div class="col-10">
+            <div>
+                <div id="slider-handles"></div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    
+   
+
+ 
+    <hr>
+    
+<!--<div class="row">
+    <div class="col-12">
+        <div id="choropleth-crisis"></div>
+    </div>
+</div>-->
+    
+    <div class="row">
+        <div class="col">
+            <h3 class="title3">Regional Housing Data</h3>
+            <p class="blurb">
+            <p class="blurb">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="col">
+            <div id="choropleth-crisis"></div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="data-view">Filter:</label>
+                    <select class="form-control" id="data-view">
+                        <option value="choice1">Choice 1</option>
+                        <option value="choice2">Choice 2</option>
+                        <option value="choice3">Choice 3</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+<hr>
+    
+    <!--Section for each housing crisis factor-->
+    <div class="row">
+        <div class="col-12">
+            <div class="blurb">
+                <h1 class="title2">
+                    Section Title Here
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>
+
+            <div class="blurb">
+                <h1 class="title2">
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>  
+        </div>
+    </div>
+    <hr/>
+    <br/>
+    <br/>
+    
+    <!--Section for each housing crisis factor-->
+    <div class="row">
+        <div class="col-12">
+            <div class="blurb">
+                <h1 class="title2">
+                    Section Title Here
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>
+
+            <div class="blurb">
+                <h1 class="title2">
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>  
+        </div>
+    </div>
+    <hr/>
+    <br/>
+    <br/>
+    
+    <!--Section for each housing crisis factor-->
+    <div class="row">
+        <div class="col-12">
+            <div class="blurb">
+                <h1 class="title2">
+                    Section Title Here
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>
+
+            <div class="blurb">
+                <h1 class="title2">
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>  
+        </div>
+    </div>
+    <hr/>
+    <br/>
+    <br/>
+    
+    <!--Section for each housing crisis factor-->
+    <div class="row">
+        <div class="col-12">
+            <div class="blurb">
+                <h1 class="title2">
+                    Section Title Here
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>
+
+            <div class="blurb">
+                <h1 class="title2">
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>  
+        </div>
+    </div>
+    <hr/>
+    <br/>
+    <br/>
+    
+<!--Section for each housing crisis factor-->
+<div class="row">
+    <div class="col-12">
+        <div class="blurb">
+            <h1 class="title2">
+                Section Title Here
+            </h1>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+        </div>
+
+        <div class="blurb">
+            <h1 class="title2">
+            </h1>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+        </div>  
+    </div>
+</div>
+<hr/>
+<br/>
+<br/>
+    
+<!--Section for each housing crisis factor-->
+<div class="row">
+    <div class="col-12">
+        <div class="blurb">
+            <h1 class="title2">
+                Section Title Here
+            </h1>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+        </div>
+
+        <div class="blurb">
+            <h1 class="title2">
+            </h1>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+        </div>  
+    </div>
+</div>
+<hr/>
+<br/>
+<br/>
+
+
+<div class="row">
+        <div class="col-12">
+            <div class="blurb">
+                <h1 class="title2">
+                    When will the next housing crisis hit?
+                </h1>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+<script>
+    //Creation of the nouislider object.
+    var handlesSlider = document.getElementById("slider-handles");
+
+    noUiSlider.create(handlesSlider, {
+        start: [1991, 2018],
+        range: {
+            'min': 1991,
+            'max': 2018
+        }, 
+        step: 4, 
+        connect: true,
+        pips: {
+            mode: 'steps',
+            stepped: true,
+            density:4
+        }
+    });
+</script>
+
+<!-- Load JS libraries -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/queue.min.js"></script>
+<script src="js/topojson.min.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/d3-tip.js"></script>
+<script src="js/d3-scale-chromatic.min.js"></script>
+<script src="js/colorbrewer.js"></script>
+
+<!-- Choropleth and optional second visualization -->
+<script src="js/housing-crisis.js"></script>
+<script src="js/choropleth-crisis.js"></script>
+
+</body>
+</html>
