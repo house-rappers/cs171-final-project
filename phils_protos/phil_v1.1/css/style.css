@@ -1,0 +1,45 @@
+
+/* ADD YOUR STYLES HERE */
+h1{
+    background-color: lightsteelblue;
+    color: whitesmoke;
+    text-anchor: middle;
+    text-align: center;
+    font-size: x-large;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: left;
+    width: 150px;
+    height: 60px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: #ffeeba;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.axis {
+    font: 10px sans-serif;
+}
+
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.button {
+    background-color: steelblue;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

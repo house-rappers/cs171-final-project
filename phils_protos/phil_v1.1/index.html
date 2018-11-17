@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Final Project - US Housing Market</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/nouislider.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<!-- * TO-DO * -->
+	<div class="container">
+		<h1>Population Growth Rate 1910 - 2017</h1>
+        <div class="row">
+            <div class="col-md-7" id="chartPopulation">
+			</div>
+            <div class="col-md-3" id="textPopulation">
+			</div>
+        </div>
+	</div>
+	<div class="container">
+		<h1>US Income Growth Rate 1970 - 2017</h1>
+        <div class="row">
+			<div class="col-md-7" id="chartIncome">
+			</div>
+			<div class="col-md-3" id="textIncome">
+			</div>
+		</div>
+	</div>
+	<div class="container">
+        <h1>Age Distribution 2010 - 2017</h1>
+        <div class="row" id="ageControls">
+            <div class="col-md-2" id="ageButtonArea">
+                <button class="button" id="ageButton"> Play </button>
+            </div>
+			<div class="col-md-6" id="ageSliderAreaArea">
+                <div id="ageSlider"></div>
+			</div>
+        </div>
+        <div class="row">
+			<div class="col-md-7" id="chartAge">
+			</div>
+			<div class="col-md-3" id="textAge">
+			</div>
+		</div>
+	</div>
+	<!-- Load JS libraries: jQuery, bootstrap, D3 -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/nouislider.js"></script>
+
+	<!-- Your implementation -->
+	<script src="js/main.js"></script>
+	<script src="js/population.js"></script>
+	<script src="js/income.js"></script>
+	<script src="js/age.js"></script>
+</body>
+</html>
