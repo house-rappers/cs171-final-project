@@ -43,7 +43,7 @@ function loadData() {
         .defer(d3.csv, "data/hpi_nsa.csv")
         .await(function (error, sa, nsa) {
 
-            if (error) throw error;; 
+            if (error) throw error;
 
             sa.forEach(function (d) {
                 d.YEAR = parseDate(d.YEAR);
