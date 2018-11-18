@@ -20,7 +20,7 @@ d3.select("#data-view").on("change", updateChoropleth);
 margin = { top: 0, right: 0, bottom: 60, left: 60 };
 
 width = 650 - margin.left - margin.right,
-    height = 710 - margin.top - margin.bottom;
+height = 710 - margin.top - margin.bottom;
 
 svg = d3.select("#choropleth").append("svg")
     .attr("width", width + margin.left + margin.right)
