@@ -1,0 +1,53 @@
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 100;
+  margin-top: 50px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.container-fluid {
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.line1 {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.line2 {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+
+.axisSteelBlue text{
+  fill: steelblue;
+}
+
+.axisRed text{
+  fill: red;
+}
+.area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
