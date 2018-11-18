@@ -43,13 +43,19 @@
             stroke: steelblue;
         }
 
-            
-        /*.path { 
-            stroke: steelblue;
-            stroke-width: 2;
-            fill: none;
-        }*/
-
+        .tooltip {
+            background-color: gray;
+            border: black;
+            color: white;
+            padding: 10px 24px;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            font-size: 14px;
+            font-family: sans-serif; 
+        }
+           
         path {
             stroke: black;
             stroke-width: 1px;
@@ -74,49 +80,86 @@
 <body>
 
 <div class="container">
-    <h1 class="title2">Is there really a housing bubble?</h1>
+    <h1 class="title2">Will there be another housing crisis?</h1>
     <hr>
-    <div class="blurb">
-        In this final project, we look at several factors that we believe could contribute to the next housing crisis. We'll review each one and provide a narrative as to how and why we think this factor will contribute to a future housing crisis.
-        What we'll cover:
+<div class="blurb">
+    <p>
+    <i>What caused the last housing crisis?</i>
+    </p>
+    <p>
+        Mid 2005, the mortgage market began suffering serious problems. Where "seriously delinquent" (90 days or more past due or in the process of foreclosure) mortgages averaged 1.7% from 1979 to 2006, by the second quarter of 2008 the number had surged to 4.5%.
+        This trend foreshadowed a sharp rise in foreclosures: roughly 1.2 million foreclosures were started in the first half of 2008, an increase of 79% from the 650,000 in the first half of 2007 (Federal Reserve estimates).
+        Within these foreclosures there was a particularly large concentration of defaults that were classified as "subprime" or "near-prime" mortgages--often these were classified as "non-prime" mortgages.
+    </p>
+    <p>
+        Although the categories are not rigidly defined, non-prime loans are generally targeted to borrowers who have tarnished credit histories and little savings available for down payments.
+        These types of mortgages are often made to borrowers with more minor credit quality issues or borrowers who are unable or unwilling to provide full documentation of assets or income; some of these borrowers are investing in real estate rather than occupying the properties they purchase.
+    <!--</p>
+    <p>-->
+        As the number of subprime loans nearly doubled from 2003 to 2005 (from 1.1 million in 2003 to 1.9 million in 2005), the share of these loans that were short-term hybrids grew as well to roughly 80 percent of all non-prime loans originated in 2005—or more than 1.5 million mortgages with teaser rates that would expire in 2007 and 2008. Despite these concerns, lending to risky borrowers grew rapidly in the 2000s.
+    </p>
+    <p>
+        If the risk of subprime mortgages were not enough, non-prime mortgages were bundled as "securities" that were then sold to investors.
+        As subprime lending grew, so too did the extent to which these loans were pooled into securities and sold to investors. This process, known as securitization, transforms illiquid individual mortgages into financial products that can be bought and sold as widely as stocks and bonds.
+    </p>
+    <p>
+        For more information on the above, see "The Rise in Mortgage Defaults" by Mayer, Pence, and Sherlund (2008).
+    </p>
+    <p>
+        In short, the perfect storm had arrived: 
         <ul>
-            <li>A look back at the last housing crisis</li>
-            <li>Demographic changes</li>
-            <li>Student loan debt</li>
-            <li>Consumer credit debt</li>
-            <li>Fluctuating interest rates</li>
-            <li>Foreign Investment in Real Estate</li>
-            <li>Economic Trends</li>
+            <li>An increase in risky subprime loans</li>
+            <li>These loans carried teaser rates that both expired quickly and were obfuscated from consumers</li>
+            <li>Predatory lending practices against non-sophisticated buyers</li>
+            <li>Bundling these already risky products into securities, which were then taken to the broader market</li>
         </ul>
-        We'll close with a summary of when we think the next hosuing crisis will hit.
-    </div>
+        With all of the above in hand, the world economy witnessed not only a housing crisis, but also a global recession. 
+    </p>
+</div>
 
-    <hr>
-    <div class="row">
-        <div class="col-2">
-            <h2 class="number">XX</h2>
-        </div>
-        <div class="col-4 blurb2">
-            <span> <u>XXXX</u> people who were impacted by the last housing crisis.</span>
-        </div>
-        <div class="col-2">
-            <h2 class="number"> XX</h2>
-        </div>
-        <div class="col-4 blurb2">
-            <span> <u>XXXX</u> dollars lost in the market as a consequence of the last housing crisis.</span>
-        </div>
+<div class="row">
+    <div class="col-2">
+        <h2 class="number">4.5</h2>
     </div>
+    <div class="col-4 blurb2">
+        <span> <u>percent</u> of all mortgages were seriously delinquent in 2008.</span>
+    </div>
+    <div class="col-2">
+        <h2 class="number">1.2</h2>
+    </div>
+    <div class="col-4 blurb2">
+        <span> <u>million</u> foreclosures were started in the first half of 2008.</span>
+    </div>
+</div>  
+<hr>
+   
+<div class="row">
+    <div class="col">
+        <div class="blurb">
+            <p>
+                <i>Is there a broader historical trend of housing sales?</i>
+            </p>
+            <p>
+                While the last housing crisis crashed the market, it did eventually recover. 
+                From the chart below, you can get a good and simple view of how (since 1991) the picture of house sales has evolved and changed. 
+                The data represents a 27-year view, using the FHFA House Price Index (HPI). 
+            </p>
+            <p>
+                The HPI is a broad measure of the movement of single-family house prices and is a
+                weighted, repeat-sales index, meaning that it measures average price changes in repeat sales or refinancings on the same properties. This information is obtained by reviewing repeat mortgage transactions on single-family properties whose mortgages have been purchased or securitized by Fannie Mae or Freddie Mac since January 1975. 
 
-    
-    <div class="row">
-        <div class="col">
-            <h1 class="title3">The last housing crisis</h1>
-            <p class="blurb">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                The HPI serves as a timely, accurate indicator of house price trends at various geographic levels. Because of the breadth of the sample, it provides more information than is available in other house price indexes. It also provides housing economists with an improved analytical tool that is useful for estimating changes in the rates of mortgage defaults, prepayments and housing affordability in specific geographic areas. 
+
+            </p>
+            <p>
+                For more information on the HPI, see the <a href="https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index.aspx">FHFA site</a>.
+            </p>
+            <p>
+                You can view the seasonally adjusted or non-adjusted numbers and filter by date range using the slider to explore how the HPI has changed over the last 27 years. 
+            </p>
         </div>
     </div>
-    <br/>
-    <br/>
+</div>
 
 <div class="row">
     <div class="col-12">
@@ -133,56 +176,116 @@
     </div>
 </div>
 
-    <div class="row">
-        <div class="col-2">
-            <div>
-                <button class="button" onclick="updateVisualization()">Update Chart</button>
-            </div>
-        </div>
-        <div class="col-10">
-            <div>
-                <div id="slider-handles"></div>
-            </div>
+<div class="row">
+    <div class="col-2">
+        <div>
+            <button class="button" onclick="updateVisualization()">Update Chart</button>
         </div>
     </div>
-    <br/>
-    <br/>
-    
-   
+    <div class="col-10">
+        <div>
+            <div id="slider-handles"></div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+  
+<div class="row">
+    <div class="col">
+        <div class="blurb">
+            <p>
+                What's interesting about the HPI is that just prior to the housing crisis in 2008, the peak HPI was 226. Now, in 2018 the HPI is 266.
+                For perspective, according to the US Census the median income in 2007 was $50, 233.00. At the end of 2017, it was $61,372.00.
+            </p>
+        </div>
+    </div>
+</div>
+<hr>
 
- 
-    <hr>
-    
-<!--<div class="row">
-    <div class="col-12">
+<div class="row">
+    <div class="col">
+        <div class="blurb">
+            <p><i>What about the current state of housing?</i></p>
+            <p>
+                As you can see from the above HPI trends, the value of houses in the US have been increasing since 2011 (where the HPI was 179).
+            </p>
+            <p>
+                Using the choropleth map to the right, you can explore the current average house values (through sales) for each US state.
+            </p>
+            <p>
+                Mouse over each state to see the name of the state and the average value for the house prices in that state. 
+            </p>
+            <p>
+                You can also see call-outs for Zillow's top 25 ranked cities (mouse over the circles for current average house values in that city). 
+            </p>
+        </div>
+    </div>
+
+    <div class="col">
         <div id="choropleth-crisis"></div>
+        <!--<form class="form-inline">
+            <div class="form-group">
+                <label for="data-view">Filter:</label>
+                <select class="form-control" id="data-view">
+                    <option value="choice1">Choice 1</option>
+                    <option value="choice2">Choice 2</option>
+                    <option value="choice3">Choice 3</option>
+                </select>
+            </div>
+        </form>-->
     </div>
-</div>-->
-    
-    <div class="row">
-        <div class="col">
-            <h3 class="title3">Regional Housing Data</h3>
-            <p class="blurb">
-            <p class="blurb">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-        <div class="col">
-            <div id="choropleth-crisis"></div>
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="data-view">Filter:</label>
-                    <select class="form-control" id="data-view">
-                        <option value="choice1">Choice 1</option>
-                        <option value="choice2">Choice 2</option>
-                        <option value="choice3">Choice 3</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-    </div>
+</div>
+<br/>
+<br/>
 <hr>
     
-    <!--Section for each housing crisis factor-->
+<!--Phil's section-->
+    
+<div class="container">
+
+    <h1>Population Growth Rate 1910 - 2017</h1>
+    <div class="row">
+        <div class="col-md-7" id="chartPopulation">
+        </div>
+        <div class="col-md-3" id="textPopulation">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <h1>US Income Growth Rate 1970 - 2017</h1>
+    <div class="row">
+        <div class="col-md-7" id="chartIncome">
+        </div>
+        <div class="col-md-3" id="textIncome">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <h1>Age Distribution 2010 - 2017</h1>
+
+    <div class="row" id="ageControls">
+        <div class="col-md-2" id="ageButtonArea">
+            <button class="button" id="ageButton"> Play </button>
+        </div>
+        <div class="col-md-6" id="ageSliderAreaArea">
+            <div id="ageSlider"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7" id="chartAge">
+        </div>
+        <div class="col-md-3" id="textAge">
+        </div>
+    </div>
+</div>
+
+<!--Section for each housing crisis factor-->
     <div class="row">
         <div class="col-12">
             <div class="blurb">
@@ -354,9 +457,15 @@
 <script src="js/d3-scale-chromatic.min.js"></script>
 <script src="js/colorbrewer.js"></script>
 
-<!-- Choropleth and optional second visualization -->
-<script src="js/housing-crisis.js"></script>
-<script src="js/choropleth-crisis.js"></script>
+<!-- Steve's Choropleth and optional second visualization -->
+<script src="js/steve/housing-crisis.js"></script>
+<script src="js/steve/choropleth-crisis.js"></script>
+    
+<!-- Steve's Choropleth and optional second visualization -->
+<script src="js/phil/main.js"></script>
+<!--<script src="js/phil/population.js"></script>
+<script src="js/phil/income.js"></script>-->
+<script src="js/phil/age.js"></script>
 
 </body>
 </html>
