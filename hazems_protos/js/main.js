@@ -1,6 +1,9 @@
+let bisectDate = d3.bisector(function(d) { return d.YEAR; }).left;
 
 
-var svg = d3.select("svg"),
+let svg =  d3.select('#line-chart').append('svg')
+    .attr('width', 960)
+    .attr('height', 500),
     margin = {top: 20, right: 20, bottom: 110, left: 40},
     margin2 = {top: 430, right: 20, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
@@ -85,11 +88,27 @@ d3.csv("data/data5.csv", function(error, data) {
     focus.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .append("text")
+        .attr("class", "axis-title")
+        // .attr("transform", "rotate(-90)")
+        .attr("y", -30).attr('x', width -100)
+        .attr("dy", "1.91em")
+        .style("text-anchor", "end")
+        .attr("fill", "#5D6971")
+        .text("(Timeline)");
 
     focus.append("g")
         .attr("class", "axis axis--y")
-        .call(yAxis);
+        .call(yAxis)
+        .append("text")
+        .attr("class", "axis-title")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -10).attr('x', -30)
+        .attr("dy", "1.91em")
+        .style("text-anchor", "end")
+        .attr("fill", "#5D6971")
+        .text("(Average House Price)");
 
     focus.append("path")
         .data([data])
@@ -100,7 +119,14 @@ d3.csv("data/data5.csv", function(error, data) {
     focus.append('g')
         .attr('class', 'axisRed')
         .attr("transform", "translate( " + width + ", 0 )")
-        .call(yAxis1);
+        .call(yAxis1).append("text")
+        .attr("class", "axis-title")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -30).attr('x', -30)
+        .attr("dy", "1.91em")
+        .style("text-anchor", "end")
+        .attr("fill", "#5D6971")
+        .text("(Mortgage Interest Rate)");;
 
     // focus.selectAll('.recession')
     //     .data(data)
@@ -113,6 +139,38 @@ d3.csv("data/data5.csv", function(error, data) {
     //     .attr('y', 0)
     //     .attr('width', 10)
     //     .attr('height', height);
+
+    let tooltip = focus.append("g")
+        .attr("class", "tooltip")
+        .style("display", "none");
+
+    tooltip.append("line")
+        .attr("class", "x-hover-line hover-line")
+        .attr("y1", 0)
+        .attr("y2", height);
+
+    tooltip.append("line")
+        .attr("class", "y-hover-line hover-line")
+        .attr("x1", width)
+        .attr("x2", width);
+
+    tooltip.append("circle")
+        .attr("r", 7.5);
+
+    tooltip.append("text")
+        .attr("x", 15)
+        .attr("dy", ".31em");
+
+
+    focus.append("rect")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .attr("class", "overlay")
+        .attr("width", width)
+        .attr("height", height)
+        .on("mouseover", function() { tooltip.style("display", null); })
+        .on("mouseout", function() { tooltip.style("display", "none"); })
+        .on("mousemove", mousemove);
+
 
     context.append("path")
       .datum(data)
@@ -135,6 +193,21 @@ d3.csv("data/data5.csv", function(error, data) {
       .attr("height", height)
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
       .call(zoom);
+
+    function mousemove() {
+        let x0 = x.invert(d3.mouse(this)[0]),
+            i = bisectDate(data, x0, 1),
+            d0 = data[i - 1],
+            d1 = data[i],
+            d = x0 - d0.YEAR > d1.YEAR - x0 ? d1 : d0;
+        console.log(d);
+        console.log(x(d.YEAR));
+        console.log(y0(d.USA));
+        tooltip.attr("transform", "translate(" + x(d.YEAR) + "," + y0(d.USA) + ")");
+        tooltip.select("text").text(function() { return d.YEAR; });
+        tooltip.select(".x-hover-line").attr("y2", height - y0(d.USA));
+        tooltip.select(".y-hover-line").attr("x2", width);
+    }
 });
 
 function brushed() {
@@ -158,3 +231,4 @@ function zoomed() {
     focus.select(".axis--x").call(xAxis);
     context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
 }
+
