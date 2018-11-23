@@ -1,18 +1,11 @@
 //Todo
-//add title
+//add title - done
 //create basic vi - done
-//create narrative
-//add slider
+//create narrative - done
+//add slider - done
 //add tooltip - done
-//add play-stop button
-//add animation
-//add edge line to accentuate the change
-//use jquery
-//add colorbrewer and color legend
-//add grid to vis
-
-//add line charts for income distribution
-//add line charts for for population growth rate
+//add play-pause button - done
+//add animation - done
 
 // Date parser to convert strings to date objects
 var parseDate = d3.timeParse("%m/%e/%Y");
@@ -25,27 +18,29 @@ var demDataPop, demDataInc, demDataAge;
 //Define the div for the tooltip
 var ageTooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
+    .attr("id", "ageToolTip")
     .style("opacity", 0);
+
+/*
+var incTooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .attr("id", "incToolTip")
+    .style("opacity", 0);
+*/
 
 loadData();
 
 function loadData() {
     queue()
-        .defer(d3.csv, "../data/population.csv") //population growth rate, 1901 - 2017
-        .defer(d3.csv, "../data/income.csv") //income growth rates, 1970 - 2017
-        .defer(d3.csv,"../data/age.csv") //populations of age groups and sex, 2010 - 2017
+        .defer(d3.csv, "data/income.csv") //income growth rates, 1970 - 2017
+        .defer(d3.csv,"data/age.csv") //populations of age groups and sex, 2010 - 2017
         .await(wrangleData);
 }
 
-function wrangleData(error, population, income, age) {
+function wrangleData(error, income, age) {
     if(!error){
-        population.forEach(function(d){
-           d.Date = parseDate(d.Date);
-           d.Value = +d.Value; //population growth rate
-        });
-
         income.forEach(function(d){
-            d.Date = parseDate(d.Date);
+            d.Year = parseDate(d.Year);
             d.realIncPC = +d.realIncPC; //real income per capita growth rate
             d.incPC = +d.incPC; //income per capita growth rate
             d.medInc = +d.medInc; //median income growth rate
@@ -53,7 +48,7 @@ function wrangleData(error, population, income, age) {
 
         age.forEach(function(d){
            d.Year = formatYear(parseYear(d.Year));
-           d.Population = +d.Population; //population by age and sex
+           d.Population = +d.Population;
         });
 
          age = d3.nest()
@@ -62,13 +57,7 @@ function wrangleData(error, population, income, age) {
             .key(function(d) { return d.Age; })
             .entries(age);
 
-        //debug
-        //console.log(population);
-        //console.log(income);
-        //console.log(age);
-
         //assign global variables
-        demDataPop = population;
         demDataInc = income;
         demDataAge = age;
 
@@ -78,7 +67,6 @@ function wrangleData(error, population, income, age) {
 }
 
 function createVis() {
-    //chartPop = new ChartPopulation("popChart", demDataPop);
-    //chartInc = new ChartIncome("incChart", demDataInc);
+    var chartInc = new ChartIncome("chartIncome", demDataInc);
     var chartAge = new ChartAge("chartAge", demDataAge);
 }

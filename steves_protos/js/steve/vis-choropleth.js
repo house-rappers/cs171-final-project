@@ -16,7 +16,7 @@ var colorSchemeValues = {
 
 d3.select("#data-view").on("change", updateChoropleth);
 
-// --> CREATE SVG DRAWING AREA
+// --> CREATE svg DRAWING AREA
 margin = { top: 0, right: 0, bottom: 60, left: 60 };
 
 width = 650 - margin.left - margin.right,

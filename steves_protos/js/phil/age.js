@@ -13,9 +13,7 @@ ChartAge = function(_parentElement, _data){
     //console.log(this.data);
 
     this.initVis();
-    //this.wrangleData("2017");
 }
-
 
 ChartAge.prototype.initVis = function(){
     var vis = this;
@@ -63,6 +61,7 @@ ChartAge.prototype.initVis = function(){
         yearRange[i] = +vis.data[i].key;
     }
 
+    //debug
     //console.log("year range");
     //console.log(yearRange);
 
@@ -91,7 +90,7 @@ ChartAge.prototype.initVis = function(){
     var currentVal = ageSlider.noUiSlider.get();
     var timer;
     var moving = false;
-    var duration = 400;
+    var duration = 600;
 
     //bars
     vis.bars = vis.svg.selectAll("rect");
@@ -112,17 +111,22 @@ ChartAge.prototype.initVis = function(){
                         vis.ageSlider.noUiSlider.set(i);
 
                         //debug
-                        console.log(i);
+                        //console.log(i);
 
                         i++;
+
+                    } else {
                         if (i === maxVal + 1) {
-                            i = minVal;
+                            setTimeout(function(){
+                                i = minVal;
+                            }, 1200);
                         }
                     }
                 }, duration);
             }
 
-            console.log("Clicked!");});
+            //console.log("Clicked!");
+        });
 
     vis.ageSlider.noUiSlider.on('update', function (values, handle){
         values[handle].innerHTML = values[handle];
@@ -170,22 +174,48 @@ ChartAge.prototype.updateVis = function(){
     for (var i = 0; i < vis.displayData.length; i++){
         ageRanges[i] = vis.displayData[i].key;
     }
-    //console.log(ageRanges);
 
     vis.x.domain(ageRanges);
 
-    /*debug
-    console.log(d3.min(vis.displayData, function(d){
-        return d.values[0].Population;
-    }));
-    console.log(d3.max(vis.displayData, function(d){
-        return d.values[0].Population;
-    }));
-    */
+
+    var retireLine = vis.svg.append("line")
+        .attr("id", "retirementAgeLine")
+        .attr("x1", vis.x("65to69"))
+        .attr("y1", 30)
+        .attr("x2", vis.x("65to69"))
+        .attr("y2", vis.height)
+        .attr("stroke-width", 2)
+        .attr("stroke", "#ccc")
+        .style("stroke-dasharray", ("3, 3"));
+
+    var retireText = vis.svg.append("text")
+        .text("US Avg Retirement Age")
+        .attr("x", vis.x("65to69"))
+        .attr("y", 30)
+        .attr("stroke", "#ccc");
 
     // (2) Draw rectangles
     var bars = vis.svg.selectAll("rect")
         .data(vis.displayData);
+
+    bars.on("mouseover", function(d) {
+        var tipAge, tipPop;
+
+        tipAge = "Age range: " + d.key;
+        tipPop = "Population: " + formatAsThousands(d.values[0].Population);
+
+        ageTooltip.transition()
+            .duration(200)
+            .style("opacity", .8);
+        ageTooltip.html("<br/>" + tipAge + "<br/>" + tipPop +  "<br/>")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY) + "px");
+    })
+        .on("mouseout", function() {
+            ageTooltip.transition()
+                .duration(600)
+                .style("opacity", 0);
+        });
 
     bars.enter()
         .append("rect")
@@ -194,7 +224,7 @@ ChartAge.prototype.updateVis = function(){
         })
         .merge(bars)
         .transition()
-        .duration(1000)
+        .duration(600)
         .attr("y", function(d) {
             return vis.y(d.values[0].Population);
         })
@@ -205,31 +235,16 @@ ChartAge.prototype.updateVis = function(){
 
         .attr("fill", "steelblue");
 
-    bars.on("mouseover", function(d) {
-            var tipAge, tipPop;
-
-            tipAge = "Age range: " + d.key;
-            tipPop = "Population: " + formatAsThousands(d.values[0].Population);
-
-            ageTooltip.transition()
-                .duration(200)
-                .style("opacity", .8);
-            ageTooltip.html("<br/>" + tipAge + "<br/>" + tipPop +  "<br/>")
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY) + "px");
-        })
-        .on("mouseout", function() {
-            ageTooltip.transition()
-                .duration(600)
-                .style("opacity", 0);
-        });
-
     bars.exit().remove();
-
-    //console.log("updateVis done");
 
     // Call axis functions with the new domain
     vis.svg.select(".x-axis").call(vis.xAxis);
     vis.svg.select(".y-axis").call(vis.yAxis);
 
+    //debug
+    //console.log("updateVis done");
 }
+
+//code editions
+// 2018-11-19_added reference line and label for "US Avg Retirement Age"
+// 2018-11-19_added setTimeOut to pause the animation

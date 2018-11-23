@@ -3,13 +3,13 @@
 var width = 800 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-var svg2 = d3.select("#choropleth-crisis").append("svg")
+var svg = d3.select("#choropleth-crisis").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .attr("fill", "steelblue");
 
-var lgnd = svg2.append("g");
-var txt = svg2.append("g"); 
+var lgnd = svg.append("g");
+var txt = svg.append("g"); 
 
 //Tooltip div element.
 var div = d3.select("body").append("div")
@@ -25,7 +25,7 @@ var lsW = 20, lsH = 20;
 
 //Color scale with domain and range for population.
 var salesColorDomain = [200000, 250000, 300000, 400000, 500000];
-var salesColorRange = ['#f1eef6', '#d7b5d8', '#df65b0', '#dd1c77', '#980043']; 
+var salesColorRange = ['#f2f0f7', '#cbc9e2', '#9e9ac8', '#756bb1', '#54278f']; 
 var salesLegendLabel = ["< 200K", "250K+", "300K+", "400K+", "500K+"];     
 
 var salesColor = d3.scaleThreshold()
@@ -74,7 +74,7 @@ queue()
         //console.log(json); 
 
         //Bind data and create one path per GeoJSON feature
-        svg2.selectAll("path")
+        svg.selectAll("path")
             .data(json.features)
             .enter()
             .append("path")
@@ -112,7 +112,7 @@ queue()
                     .style("opacity", 0);
             });
 
-        svg2.selectAll("circle")
+        svg.selectAll("circle")
             .data(topcities)
             .enter()
             .append("circle")

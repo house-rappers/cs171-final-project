@@ -3,7 +3,7 @@
 // ES6 / D3 v4 Adaption Copyright (c) 2016 Constantin Gavrilete
 // Removal of ES6 for D3 v4 Adaption Copyright (c) 2016 David Gotz
 //
-// Tooltips for d3.js SVG visualizations
+// Tooltips for d3.js svg visualizations
 
 d3.functor = function functor(v) {
   return typeof v === "function" ? v : function() {
@@ -22,8 +22,8 @@ d3.tip = function() {
       target    = null
 
   function tip(vis) {
-    svg = getSVGNode(vis)
-    point = svg.createSVGPoint()
+    svg = getsvgNode(vis)
+    point = svg.createsvgPoint()
     document.body.appendChild(node)
   }
 
@@ -32,7 +32,7 @@ d3.tip = function() {
   // Returns a tip
   tip.show = function() {
     var args = Array.prototype.slice.call(arguments)
-    if(args[args.length - 1] instanceof SVGElement) target = args.pop()
+    if(args[args.length - 1] instanceof svgElement) target = args.pop()
 
     var content = html.apply(this, args),
         poffset = offset.apply(this, args),
@@ -249,12 +249,12 @@ d3.tip = function() {
     return node.node()
   }
 
-  function getSVGNode(el) {
+  function getsvgNode(el) {
     el = el.node()
     if(el.tagName.toLowerCase() === 'svg')
       return el
 
-    return el.ownerSVGElement
+    return el.ownersvgElement
   }
 
   function getNodeEl() {
@@ -268,7 +268,7 @@ d3.tip = function() {
 
   // Private - gets the screen coordinates of a shape
   //
-  // Given a shape on the screen, will return an SVGPoint for the directions
+  // Given a shape on the screen, will return an svgPoint for the directions
   // n(north), s(south), e(east), w(west), ne(northeast), se(southeast), nw(northwest),
   // sw(southwest).
   //
