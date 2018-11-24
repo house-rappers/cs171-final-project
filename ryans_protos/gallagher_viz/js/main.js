@@ -5,11 +5,13 @@ var allHomeAgeData = [];
 var stdDemoHomeData = [];
 var totalHomePercentage = [];
 var barchart = null;
+var sankeyGraph = [];
 
 queue()
     .defer(d3.csv, "data/FRB_G19.csv")
     .defer(d3.csv, "data/home_ownership_by_age.csv")
-    .await(function(error, frbData,homeData){
+    .defer(d3.json, "data/sankey.json")
+    .await(function(error, frbData,homeData,graph){
 
         // --> PROCESS DATA
         console.log(error);
@@ -37,6 +39,7 @@ queue()
 
         });
 
+
         console.log("cleaned",allHomeAgeData);
         console.log("total",totalHomePercentage);
 
@@ -52,6 +55,9 @@ queue()
                 }
             }
         });
+
+
+        sankeyGraph = graph;
 
         console.log("student",studenLoanData);
         createVis()
@@ -69,5 +75,6 @@ function createVis(){
     linechart = new LineChart("line-chart",totalHomePercentage);
     barchart = new StackedBarChart("bar-chart",stdDemoHomeData);
     areachart = new AreaChart("area-chart",studenLoanData["series"]);
+    sankeychart = new SankeyChart("sankey-chart",sankeyGraph);
 
 }
